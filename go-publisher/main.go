@@ -27,6 +27,8 @@ func main() {
 
 	log.Printf("Accepting connections at %v", pubUrl)
 
+	time.Sleep(1 * time.Second)
+
 	const count = 42
 	for i := 0; i < count; i++ {
 		text := fmt.Sprintf("Message: %v", i)

@@ -11,6 +11,8 @@ socket = context.socket(zmq.PUB)
 socket.bind(pub_url)
 print("Accepting connections at %s" % (pub_url))
 
+time.sleep(1)
+
 for i in range(42):
     text = "Message %s" % (i)
     message = json.dumps({
@@ -18,7 +20,7 @@ for i in range(42):
         'timestamp': int(datetime.now().timestamp())
     })
     print("Publishing: %s" % (text))
-    socket.send_string(message, zmq.NOBLOCK)
+    socket.send_string(message)
     
     time.sleep(1)
 

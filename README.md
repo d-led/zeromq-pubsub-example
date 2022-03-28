@@ -5,7 +5,7 @@
 in separate consoles:
 
 - in `go-publisher`: `go run .`
-- in `go-subscriber`: `go run .`
+- in `go-subscriber`: `go run .` (more than one can be started)
 - alternatively, start the python publisher in `py-publisher`:
   - install the dependencies: `pip3 install -r requirements.txt`
   - run: `python3 main.go`

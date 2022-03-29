@@ -21,3 +21,4 @@ docker-compose up --build --force-recreate
 ### OSX
 
 - `brew install zeromq libsodium czmq`
+

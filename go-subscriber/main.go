@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 
@@ -24,7 +25,7 @@ func main() {
 	sub.SetRcvtimeo(receiveTimeout)
 	defer sub.Destroy()
 
-	log.Printf("connecting to %v", connectUrl)
+	fmt.Printf("connecting to %v\n", connectUrl)
 
 	pid := os.Getpid()
 
@@ -33,7 +34,7 @@ func main() {
 		exitOnError(err)
 		message := Notification{}
 		exitOnError(json.Unmarshal(msg, &message))
-		log.Printf("%v received: %v, sent at %v", pid, message.Message, message.Timestamp)
+		fmt.Printf("[%v] received: %v, sent at %v\n", pid, message.Message, message.Timestamp)
 	}
 }
 

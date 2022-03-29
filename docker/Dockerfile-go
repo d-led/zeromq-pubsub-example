@@ -1,0 +1,16 @@
+FROM golang:1.18-alpine AS builder
+
+RUN apk add --no-cache libzmq czmq-dev libsodium-dev build-base pkgconfig
+
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY . .
+RUN go build -v -o app
+
+FROM alpine
+RUN apk add --no-cache libzmq czmq libsodium
+COPY --from=builder /app/app .
+ENTRYPOINT ["/app"]

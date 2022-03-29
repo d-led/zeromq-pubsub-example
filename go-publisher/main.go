@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/zeromq/goczmq"
@@ -25,13 +26,17 @@ func main() {
 	exitOnError(err)
 	defer pub.Destroy()
 
-	log.Printf("Accepting connections at %v", pubUrl)
+	fmt.Printf("Accepting connections at %v\n", pubUrl)
 
 	time.Sleep(1 * time.Second)
 
-	const count = 42
+	count, err := strconv.Atoi(os.Getenv("PUBLISH_COUNT"))
+	if count < 1 || err != nil {
+		count = 42
+	}
+
 	for i := 0; i < count; i++ {
-		text := fmt.Sprintf("Message: %v", i)
+		text := fmt.Sprintf("from go-publisher: %v", i)
 
 		message, err := json.Marshal(&Notification{
 			Message:   text,
@@ -39,7 +44,7 @@ func main() {
 		})
 		exitOnError(err)
 
-		log.Printf("Publishing: %v", text)
+		fmt.Printf("Publishing: %v\n", text)
 		err = pub.SendFrame(message, 0)
 		exitOnError(err)
 

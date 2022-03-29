@@ -10,8 +10,14 @@ in separate consoles:
   - install the dependencies: `pip3 install -r requirements.txt`
   - run: `python3 main.go`
 
+### In Docker
+
+```bash
+docker-compose up --build --force-recreate
+```
+
 ## Dependencies
 
 ### OSX
 
-- `brew install zeromq libsodium czmq` 
+- `brew install zeromq libsodium czmq`

@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  py-publisher:
+    build:
+      context: py-publisher
+    environment:
+      - PUBLISH_COUNT=5
+
+  go-publisher:
+    build:
+      context: go-publisher
+      dockerfile: ../docker/Dockerfile-go
+    environment:
+      - PUBLISH_COUNT=5
+
+  go-go-subscriber:
+    build:
+      context: go-subscriber
+      dockerfile: ../docker/Dockerfile-go
+    environment:
+      - CONNECT_URL=tcp://go-publisher:5555
+    deploy:
+        replicas: 2
+
+  go-py-subscriber:
+    build:
+      context: go-subscriber
+      dockerfile: ../docker/Dockerfile-go
+    environment:
+      - CONNECT_URL=tcp://py-publisher:5555
+    deploy:
+        replicas: 2

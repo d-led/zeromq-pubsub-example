@@ -11,7 +11,7 @@ in separate consoles:
   - on Windows: same as for `go-publisher`
 - alternatively, start the python publisher in `py-publisher`:
   - install the dependencies: `pip3 install -r requirements.txt`
-  - run: `python3 main.go`
+  - run: `python3 main.py`
 
 ### In Docker
 

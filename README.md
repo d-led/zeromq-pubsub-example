@@ -19,6 +19,12 @@ in separate consoles:
 docker-compose up --build --force-recreate
 ```
 
+### Demo on Windows
+
+- install the dependencies as described below
+- run `demo.bat`, which starts two subscribers in the background
+  and the python publisher in the foreground
+
 ## Dependencies
 
 ### OSX

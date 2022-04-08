@@ -1,5 +1,7 @@
 # zeromq-pubsub-example
 
+see the demo output: [![Docker Demo](https://github.com/d-led/zeromq-pubsub-example/actions/workflows/docker-demo.yml/badge.svg)](https://github.com/d-led/zeromq-pubsub-example/actions/workflows/docker-demo.yml)
+
 ## Running
 
 in separate consoles:
